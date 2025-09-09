@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-image-updater-config
+  namespace: argocd
+data:
+  registries.conf: |
+    registries:
+      - name: local-registry
+        prefix: 95.217.144.59:5000
+        api_url: http://95.217.144.59:5000
+        ping: yes
+        insecure: yes
+        credentials: admin:123456
+  log.level: info
+  metrics.enabled: "true"
+  git.commit-message-template: |
+    [ci] Update {{ .AppName }} image to {{ .NewTag }}
+    Built: {{ .Timestamp }}

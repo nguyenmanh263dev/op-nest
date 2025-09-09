@@ -1,0 +1,166 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  annotations:
+    argocd-image-updater.argoproj.io/currencyservice.registry: 95.217.144.59:5000
+    argocd-image-updater.argoproj.io/git-branch: main
+    argocd-image-updater.argoproj.io/image-list: currencyservice=95.217.144.59:5000/currencyservice:latest
+    argocd-image-updater.argoproj.io/repository-secret: repo-creds-ops-team-infra
+    argocd-image-updater.argoproj.io/update-strategy: digest
+    argocd-image-updater.argoproj.io/write-back-method: git
+  name: currencyservice-app
+  namespace: argocd
+spec:
+  destination:
+    namespace: default
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: currency-service
+    repoURL: https://github.com/tekaigroup/ops-team-infra.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+status:
+  controllerNamespace: argocd
+  health:
+    lastTransitionTime: "2025-09-05T04:29:41Z"
+    status: Healthy
+  history:
+    - deployStartedAt: "2025-09-05T03:42:16Z"
+      deployedAt: "2025-09-05T03:42:17Z"
+      id: 0
+      initiatedBy:
+        automated: true
+      revision: d98e14f947880a1184677f57e30dfb37c260ef48
+      source:
+        directory:
+          include: currencyservice.yaml
+          jsonnet: {}
+        path: test
+        repoURL: https://github.com/tekaigroup/ops-team-infra.git
+        targetRevision: HEAD
+    - deployStartedAt: "2025-09-05T04:19:02Z"
+      deployedAt: "2025-09-05T04:19:02Z"
+      id: 1
+      initiatedBy:
+        username: admin
+      revision: c4aa981e4938e82310c4336f7a732dfa8c8211a6
+      source:
+        path: currency-service
+        repoURL: https://github.com/tekaigroup/ops-team-infra.git
+        targetRevision: HEAD
+    - deployStartedAt: "2025-09-05T04:26:17Z"
+      deployedAt: "2025-09-05T04:26:17Z"
+      id: 2
+      initiatedBy:
+        automated: true
+      revision: 1b7775e58a922100209d1554463c9d66f65493e1
+      source:
+        path: currency-service
+        repoURL: https://github.com/tekaigroup/ops-team-infra.git
+        targetRevision: HEAD
+    - deployStartedAt: "2025-09-05T04:29:41Z"
+      deployedAt: "2025-09-05T04:29:41Z"
+      id: 3
+      initiatedBy:
+        username: admin
+      revision: 1b7775e58a922100209d1554463c9d66f65493e1
+      source:
+        path: currency-service
+        repoURL: https://github.com/tekaigroup/ops-team-infra.git
+        targetRevision: HEAD
+    - deployStartedAt: "2025-09-05T04:30:30Z"
+      deployedAt: "2025-09-05T04:30:31Z"
+      id: 4
+      initiatedBy:
+        username: admin
+      revision: 1b7775e58a922100209d1554463c9d66f65493e1
+      source:
+        path: currency-service
+        repoURL: https://github.com/tekaigroup/ops-team-infra.git
+        targetRevision: HEAD
+    - deployStartedAt: "2025-09-05T06:47:52Z"
+      deployedAt: "2025-09-05T06:47:52Z"
+      id: 5
+      initiatedBy:
+        automated: true
+      revision: 735ea54bf82af37a444a701614ce4f4fc4f909ce
+      source:
+        path: currency-service
+        repoURL: https://github.com/tekaigroup/ops-team-infra.git
+        targetRevision: HEAD
+  operationState:
+    finishedAt: "2025-09-05T06:48:19Z"
+    message: successfully synced (all tasks run)
+    operation:
+      initiatedBy:
+        automated: true
+      retry:
+        limit: 5
+      sync:
+        autoHealAttemptsCount: 4
+        prune: true
+        resources:
+          - group: apps
+            kind: Deployment
+            name: currencyservice
+        revision: 735ea54bf82af37a444a701614ce4f4fc4f909ce
+    phase: Succeeded
+    startedAt: "2025-09-05T06:48:19Z"
+    syncResult:
+      resources:
+        - group: apps
+          hookPhase: Running
+          images:
+            - 95.217.144.59:5000/currencyservice:latest@sha256:3fe803522f5158a353c0ce9c05ac21024992b06a801a8633a3cb9ee7fc88c593
+          kind: Deployment
+          message: deployment.apps/currencyservice configured
+          name: currencyservice
+          namespace: default
+          status: Synced
+          syncPhase: Sync
+          version: v1
+      revision: 735ea54bf82af37a444a701614ce4f4fc4f909ce
+      source:
+        path: currency-service
+        repoURL: https://github.com/tekaigroup/ops-team-infra.git
+        targetRevision: HEAD
+  reconciledAt: "2025-09-05T06:48:19Z"
+  resourceHealthSource: appTree
+  resources:
+    - kind: Service
+      name: currencyservice
+      namespace: default
+      status: Synced
+      version: v1
+    - group: apps
+      kind: Deployment
+      name: currencyservice
+      namespace: default
+      status: OutOfSync
+      version: v1
+    - group: networking.k8s.io
+      kind: NetworkPolicy
+      name: allow-frontend-to-currency
+      namespace: default
+      status: Synced
+      version: v1
+  sourceHydrator: {}
+  sourceType: Kustomize
+  summary:
+    images:
+      - 95.217.144.59:5000/currencyservice:latest@sha256:3fe803522f5158a353c0ce9c05ac21024992b06a801a8633a3cb9ee7fc88c593
+  sync:
+    comparedTo:
+      destination:
+        namespace: default
+        server: https://kubernetes.default.svc
+      source:
+        path: currency-service
+        repoURL: https://github.com/tekaigroup/ops-team-infra.git
+        targetRevision: HEAD
+    revision: 735ea54bf82af37a444a701614ce4f4fc4f909ce
+    status: OutOfSync
