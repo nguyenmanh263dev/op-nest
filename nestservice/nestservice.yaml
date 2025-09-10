@@ -1,3 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nest-config
+data:
+  PORT: "2603"
+  DATABASE_CONNECTION: "mysql"
+  DATABASE_USER: "root"
+  DATABASE_PASSWORD: "MagsusaA@123"
+  DATABASE_PORT: "3307"
+  DATABASE_DB: "rick"
+  BCRYPT_SALT: "example"
+  DATABASE_HOST: "nest-mysql-service"
+  JWT_SECRET_KEY: "dungdeanhsuy"
+  JWT_EXPIRES_IN: "100m"
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
