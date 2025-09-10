@@ -5,8 +5,8 @@ metadata:
 data:
   PORT: "2603"
   DATABASE_CONNECTION: "mysql"
-  DATABASE_USER: "root"
-  DATABASE_PASSWORD: "MagsusaA@123"
+  DATABASE_USER: "admin"
+  DATABASE_PASSWORD: "admin123"
   DATABASE_PORT: "3306"
   DATABASE_DB: "rick"
   BCRYPT_SALT: "example"
