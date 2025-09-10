@@ -48,7 +48,7 @@ spec:
     app: nestservice
   ports:
     - protocol: TCP
-      port: 2603
-      targetPort: 2603
+      port: 3003
+      targetPort: 3003
       nodePort: 31234
   type: NodePort
