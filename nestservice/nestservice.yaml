@@ -38,12 +38,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: nestjs-node
+  name: nestservice
   labels:
-    app: nest
+    app: nestservice
 spec:
   selector:
-    app: nest
+    app: nestservice
   ports:
     - protocol: TCP
       port: 2603
