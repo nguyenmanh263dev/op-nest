@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: nest-config
 data:
-  PORT: "2603"
+  PORT: "3003"
   DATABASE_CONNECTION: "mysql"
   DATABASE_USER: "admin"
   DATABASE_PASSWORD: "admin123"
