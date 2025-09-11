@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: nest-config
 data:
-  PORT: "3003"
+  PORT: "2603"
   DATABASE_CONNECTION: "mysql"
   DATABASE_USER: "admin"
   DATABASE_PASSWORD: "admin123"
@@ -48,7 +48,7 @@ spec:
     app: nestservice
   ports:
     - protocol: TCP
-      port: 3003
-      targetPort: 3003
+      port: 2603
+      targetPort: 2603
       nodePort: 31234
   type: NodePort
