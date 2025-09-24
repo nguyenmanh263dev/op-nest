@@ -1,3 +1,3 @@
 kustomize:
   images:
-  - nguyenmanh263/nestservice:latest@sha256:2a4ce487dbda9c244afaaaec4a546a01263ec5a5611b2891db1a1c2c07989866
+  - nguyenmanh263/nestservice:latest@sha256:cab43ee0af81f1550cb04251d326f3766bcaf35634c8b8b2e0cb02dfd73b5b5b
